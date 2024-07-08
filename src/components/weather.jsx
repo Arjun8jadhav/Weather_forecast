@@ -1,26 +1,25 @@
-import {useState } from 'react';
+import {  useState } from 'react';
 import { Navbar } from './Navbar';
 import { Box, Button, Card, Container, Input, Typography } from '@mui/material';
 import axios from 'axios';
 import { prof } from '../assets/background/background';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import MyLocationIcon from '@mui/icons-material/MyLocation';
 import './weather.css';
+
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 export const Weather = () => {
   const [start, setStart] = useState(false);
   const [arr, setArr] = useState([]);
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState(''); 
   const [bardat, setBardat] = useState([]);
-  
-
 
   const handleInputChange = (event) => {
     setCity(event.target.value);
   };
 
- 
   const weather = async () => {
     try {
       const app = await axios.get(
@@ -64,7 +63,32 @@ export const Weather = () => {
         </Button>
       </Container>
 
-      <Container sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '20px', marginTop: '70px' }}>
+      {start && (
+        <Container
+          sx={{
+            marginTop: '30px',
+            display: 'flex',
+            flexDirection: 'column',
+            padding: '10px',
+            alignItems: { xs: 'center', sm: 'flex-start' },
+            justifyContent: 'center',
+            marginLeft: { xs: '0', sm: '50px' },
+            color: 'dark',
+            fontFamily: 'monospace',
+          }}
+        >
+          <Box display='flex' alignItems='center' gap='10px'>
+            <MyLocationIcon />
+            <Typography variant='h6'>Location Information</Typography>
+          </Box>
+          <Typography variant='body1'>City: {arr.location.name}</Typography>
+          <Typography variant='body1'>Region: {arr.location.region}</Typography>
+          <Typography variant='body1'>Country: {arr.location.country}</Typography>
+          <Typography variant='body1'>Condition: {arr.current.condition.text}</Typography>
+        </Container>
+      )}
+
+      <Container sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '20px', marginTop: '40px' }}>
         {start ? (
           <>
             <Card sx={{ display: 'flex', flexDirection: 'column', padding: '20px', width: '100%', maxWidth: '300px' }}>
@@ -116,7 +140,7 @@ export const Weather = () => {
             </Box>
           </>
         ) : (
-          <p>Hello</p>
+          <p>Enter your city name to get started</p>
         )}
       </Container>
     </>

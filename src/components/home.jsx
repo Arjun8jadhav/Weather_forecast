@@ -1,6 +1,5 @@
 
-import { Box, Button, Container, Typography } from '@mui/material';// Ensure this path is correct
-import axios from 'axios';
+import { Box, Button, Container, Typography } from '@mui/material';
 import { Navbar } from './Navbar';
 
 
@@ -14,9 +13,9 @@ export const Home = () => {
 
          <Container maxWidth="sm" style={{ marginTop: '100px', alignItems: 'center', justifyContent: 'center' }} >
             <Typography variant='h2' align='center' gutterBottom>Forcast for weather</Typography>
-            <Typography variant='h5' align='center' gutterBottom>In this Project We are using weather API  for Providing current weather condition and Forcasting next 7 days</Typography>
+            <Typography variant='h6' align='center' gutterBottom>This weather forecast app allows users to search for weather conditions in any city, displaying details like temperature, wind speed, humidity, and daily chance of rain. It includes responsive design elements for an optimal user experience across devices. Additionally, the app visualizes rain probability over a week using a line chart.</Typography>
             <Box display="flex" gap="10px" alignItems="center" justifyContent="center" marginTop='20px'>
-               <Button href='/' variant='contained'>Source Code</Button>
+               <Button href='https://github.com/Arjun8jadhav/Weather_forecast' variant='contained'>Source Code</Button>
                <Button href='/main' variant='contained'>Get Started</Button>
             </Box>
          </Container>
