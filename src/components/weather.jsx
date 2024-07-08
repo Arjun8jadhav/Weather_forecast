@@ -6,7 +6,6 @@ import { prof } from '../assets/background/background';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import './weather.css';
-
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 export const Weather = () => {
@@ -25,7 +24,7 @@ export const Weather = () => {
   const weather = async () => {
     try {
       const app = await axios.get(
-        `http://api.weatherapi.com/v1/forecast.json?key=16d9e62be23a4ebb8ff63139240607&q=${city}&days=7&aqi=no&alerts=no`
+        `https://api.weatherapi.com/v1/forecast.json?key=16d9e62be23a4ebb8ff63139240607&q=${city}&days=7&aqi=no&alerts=no`
       );
       console.log(app.data);
       setArr(app.data);
